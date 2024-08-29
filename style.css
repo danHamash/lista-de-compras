@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=New+Amsterdam&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+}
+*{
+    font-family: "Luckiest Guy", "Open Sanas", sans-serif;
+}
+
+h1, h2{
+    font-size: 2rem;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    background: #ff8801;
+}
+div{
+    padding: 0 .1rem 1rem .2rem;
+}
+
+input{
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+}
+label{
+    font-size: 1.5rem;
+}
+input:checked{
+    margin: 0 10px 0 10px ;
+    accent-color: #7bce1d;
+    box-shadow: 0 0 5px 2px #ff8801 ;
+    
+}
+.title{
+    font-size: 3rem;
+}
+:checked + label{
+    color: #61a118;
+    transition: 1s;
+}
+.item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+.item-container label {
+    flex: 1;
+    margin-right: 10px;
+}
+.item-container button {
+    flex-shrink: 0;
+}
+ .container div:has(input:checked) {
+    background: #4f8314 ;
+    border-radius: 9px;
+    max-width: 700px;
+    margin-bottom:10px ;
+ }
+.container{
+    background-color: #d8d6d6;
+    width: 1200px;
+    margin: 20px auto;
+    border-radius: 9px;
+}
+#inputLimpeza, #inputAlimentos {
+    outline: none;
+    border: none;
+    min-width: 200px;
+    min-height: 40px;
+    margin-right: 10px;
+}
+.button-delete {margin-left: 90px;
+}
+#inputLimpeza, #inputAlimentos, button{
+    margin: 1rem 1rem 1rem 0;
+}
+button {
+    padding: 10px;
+    background: #ff8801;
+}
+
+ul {
+    margin-top: 20px;
+}
+
+li {
+    padding: 5px 0;
+}
+@media screen and (min-Width:320px) and (max-width:720px) {
+    
+    h1{
+    font-size: 4rem;
+    margin-top: 0;
+    }
+    h2{
+        font-size:4rem;
+    }
+    label{
+        font-size: 2.5rem;
+    }
+    input{
+
+        margin-right: 1rem;
+        width: 30px;
+        height: 30px;
+    }
+    button{
+        font-size: 3rem;
+    }
+    #inputLimpeza, #inputAlimentos:placeholder-shown{
+        font-size: 1.7rem;
+        min-width: 300px;
+    }
+}
