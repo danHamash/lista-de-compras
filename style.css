@@ -33,7 +33,7 @@ div{
 }
 
 input{
-    margin-right: 1rem;
+    margin: 0 1rem 0 6rem;
     width: 20px;
     height: 20px;
 }
@@ -101,7 +101,7 @@ input:checked{
     height: 60px;
 }
 button {
-
+    border-radius: 9px;
     padding: 10px;
     background: #ff8801;
 }
@@ -124,9 +124,9 @@ li {
         font-size:1.2rem;
     }
     input{
-        margin-right: 1rem;
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
+        margin: 0 0 0 1rem;
     }
     .add-button{
         font-size: 1rem;
@@ -140,7 +140,6 @@ li {
         outline: none;
         border: none;
         min-width: 120px;
-       
     }
     .title{
         font-size: 2rem;
