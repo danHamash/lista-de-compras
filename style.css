@@ -48,6 +48,8 @@ input:checked{
 }
 .title{
     font-size: 2rem;
+    position: absolute;
+    top: 0;
 }
 :checked + label{
     color: #61a118;
@@ -117,15 +119,21 @@ li {
     }
     button{
         font-size: 1rem;
+        margin: 0;
     }
     label{
         font-size: .8rem;
     }
     #inputLimpeza, #inputAlimentos:placeholder-shown{
-        font-size: .8rem;
+        font-size: 1rem;
         outline: none;
         border: none;
         min-width: 120px;
        
+    }
+    .title{
+        font-size: 2rem;
+        position: absolute;
+        top: 0;
     }
 }
