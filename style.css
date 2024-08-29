@@ -33,6 +33,7 @@ div{
 }
 
 input{
+    cursor: pointer;
     font-family: "Roboto";
     font-weight: bold;
     border-radius: 9px;
@@ -107,6 +108,7 @@ input:checked{
     height: 60px;
 }
 button {
+    cursor: pointer;
     border-radius: 9px;
     padding: 10px;
     background: #ff8801;
