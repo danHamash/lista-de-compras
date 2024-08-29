@@ -89,7 +89,19 @@ input:checked{
 #inputLimpeza, #inputAlimentos, button{
     margin: 1rem 1rem 1rem 0;
 }
+#inputLimpeza, #inputAlimentos:placeholder-shown{
+    padding: 10px;
+   font-size: 1.5rem;
+   min-width: 300px;
+}
+.add-button{
+    margin-left:40px ;
+    padding: 10px;
+    font-size: 1.5rem;
+    height: 60px;
+}
 button {
+
     padding: 10px;
     background: #ff8801;
 }
