@@ -145,4 +145,7 @@ li {
     .title{
         font-size: 2rem;
     }
+    .item-container{
+        margin-right: .8rem;
+    }
 }
