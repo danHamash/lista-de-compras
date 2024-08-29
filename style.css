@@ -122,11 +122,14 @@ li {
     button{
         font-size: 1rem;
     }
-    .container{
-        min-width: 320px;
-        max-width: 720px;
+    label{
+        font-size: .8rem;
     }
     #inputLimpeza, #inputAlimentos:placeholder-shown{
         font-size: .8rem;
+        outline: none;
+        border: none;
+        min-width: 120px;
+       
     }
 }
