@@ -33,6 +33,7 @@ div{
 }
 
 input{
+    border-radius: 9px;
     margin: 0 1rem 0 6rem;
     width: 20px;
     height: 20px;
@@ -64,6 +65,9 @@ input:checked{
     margin-right: 10px;
 }
 .item-container button {
+    font-size: 1.5rem;
+    width: 150px;
+    height: 60px;
     flex-shrink: 0;
 }
  .container div:has(input:checked) {
@@ -124,6 +128,7 @@ li {
         font-size:1.2rem;
     }
     input{
+        border-radius: 9px;
         width: 20px;
         height: 20px;
         margin: 0 0 0 1rem;
@@ -147,4 +152,7 @@ li {
     .item-container{
         margin-right: .8rem;
     }
+    .item-container button {
+        font-size: .8rem;
+        flex-shrink: 0;
 }
