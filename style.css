@@ -104,14 +104,14 @@ li {
 @media screen and (min-Width:320px) and (max-width:720px) {
     
     h1{
-    font-size: 4rem;
+    font-size: 2rem;
     margin-top: 0;
     }
     h2{
-        font-size:4rem;
+        font-size:2rem;
     }
     label{
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
     input{
 
@@ -127,6 +127,6 @@ li {
         max-width: 720px;
     }
     #inputLimpeza, #inputAlimentos:placeholder-shown{
-        font-size: 1.7rem;
+        font-size: .8rem;
     }
 }
