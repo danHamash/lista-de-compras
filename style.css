@@ -207,4 +207,7 @@ footer{
         font-size: .8rem;
         flex-shrink: 0;
     }
+    .descricao span {
+        margin-left: .5rem;
+    }
 }
