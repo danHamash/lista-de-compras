@@ -8,9 +8,15 @@
 </head>
 <body>
 <main class="container">
-    <h1 class="title">Lista de Compras</h1>
+    <div class="descricao">
+        <h1 class="title">Lista de Compras</h1>
+        <span>Escreva sua lista de compras usando o campo de "Adicionar item" para escrever o item desejado e depois click no botão para adicionar o item a sua lista.
+              Haverá uma caixa ao lado esquerdo de cada item. Essa caixa serve para marcar qual item ja foi adicionado ao seu carrinho na hora da compra, e do lado direito de cada item um botão excluir. 
+              Que removerá o item da sua lista. </span>
+    </div>
+    
     <section id="alimentos">
-        <h2>Alimentos</h2>
+        <h2 class="alimentos">Alimentos</h2>
         <button onclick="addItem('alimentos')" class="add-button">Adicionar</button>
         <input id="inputAlimentos" type="text" placeholder="Adicionar item" >
         
