@@ -187,7 +187,7 @@ footer{
     }
     .add-button{
         font-size: 1rem;
-        margin: 0;
+        margin: 0 0 0 .5rem;
     }
     #inputLimpeza, #inputAlimentos:placeholder-shown{
         font-size: 1rem;
