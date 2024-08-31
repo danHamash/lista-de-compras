@@ -139,8 +139,10 @@ input:checked{
 button {
     cursor: pointer;
     border-radius: 9px;
+    border: 1px solid #000000;
     padding: 10px;
     background: #ff8801;
+    box-shadow: 4px 10px 4px #0c0c0c;
 }
 
 ul {
@@ -155,6 +157,7 @@ footer{
         font-size: 1.4rem;
         font-family: "Roboto";
         padding: 0;
+        margin-bottom: 1rem;
 }
 @media screen and (min-Width:320px) and (max-width:720px) {
     h1,h2{
