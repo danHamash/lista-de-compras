@@ -103,6 +103,7 @@ input:checked{
     flex-shrink: 0;
 }
  .container div:has(input:checked) {
+    margin-left: 2.5rem;
     background: #4f8314 ;
     border-radius: 9px;
     max-width: 700px;
