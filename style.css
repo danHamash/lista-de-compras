@@ -22,14 +22,27 @@
     font-family: "Luckiest Guy", "Open Sanas", sans-serif;
 }
 body{
-    background-color: #d8d6d6;
+    background-color: var(--primary-color);
+    font-family: "Roboto";
+}
+:root{
+    --secundary-color:#ff8801;
+    --secundary-color-hover:#ce6f02;
+    --primary-color:#d8d6d6;
+    --white:#fff;
+    --black:#000;
+    --checked:#7bce1d;;
+    --checked-bg:#4f8314;
+    --shadow:rgb(175, 175, 175);
 }
 
 h1, h2{
     font-size: 3rem;
     margin: 0 0 2rem 0;
     text-align: center;
-    background: #ff8801;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--secundary-color);
 }
 div{
     padding: 0 .1rem 1rem .2rem;
@@ -37,7 +50,6 @@ div{
 
 input{
     cursor: pointer;
-    font-family: "Roboto";
     font-weight: bold;
     border-radius: 9px;
     margin: 0 1rem 0 6rem;
@@ -49,8 +61,8 @@ label{
 }
 input:checked{
     margin: 0 10px 0 10px ;
-    accent-color: #7bce1d;
-    box-shadow: 0 0 5px 2px #ff8801 ;
+    accent-color: var(--checked);
+    box-shadow: 0 0 5px 2px var(--secundary-color) ;
     
 }
 .descricao{
@@ -62,7 +74,8 @@ input:checked{
     width: 100%;
 }
 .descricao span{
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
+    font-size: 1.2rem;
     font-weight: 900;
     margin: auto;
     width: 800px;
@@ -83,7 +96,7 @@ input:checked{
     margin-top:5rem ;
 }
 :checked + label{
-    color: #61a118;
+    color: var(--checked);
     transition: 1s;
 }
 .item-container {
@@ -104,33 +117,38 @@ input:checked{
 }
  .container div:has(input:checked) {
     margin-left: 2.5rem;
-    background: #4f8314 ;
+    background: var(--checked-bg);
     border-radius: 9px;
     max-width: 700px;
     margin-bottom:10px ;
  }
 .container{
-    background-color: #d8d6d6;
+    background-color: var(--primary-color);
     margin: 20px auto;
     border-radius: 9px;
 }
+#inputLimpeza:focus, #inputAlimentos:focus{
+    border: 2px solid var(--secundary-color);
+}
 #inputLimpeza, #inputAlimentos {
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1px;
     outline: none;
     border: none;
+    font-size: 1.5rem;
     min-width: 200px;
-    min-height: 40px;
+    min-height: 50px;
     margin-right: 10px;
-    box-shadow: 3px 12px 9px rgb(175, 175, 175);
+    padding: 10px;
+    box-shadow: 3px 12px 9px var(--shadow);
 }
 .button-delete {margin-left: 90px;
 }
 #inputLimpeza, #inputAlimentos, button{
     margin: 1rem 1rem 1rem 0;
 }
-#inputLimpeza, #inputAlimentos:placeholder-shown{
-    padding: 10px;
+#inputAlimentos:placeholder-shown{
    font-size: 1.5rem;
-   min-width: 300px;
 }
 .add-button{
     margin-left:40px ;
@@ -139,12 +157,19 @@ input:checked{
     height: 60px;
 }
 button {
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
     border-radius: 9px;
     border: none;
     padding: 10px;
-    background: #ff8801;
-    box-shadow: 3px 10px 9px rgb(175, 175, 175);
+    background: var(--secundary-color);
+    box-shadow: 3px 10px 9px var(--shadow);
+}
+button:hover{
+    background: var(--secundary-color-hover);
+    color: var(--white);
+    
 }
 
 ul {
@@ -164,7 +189,7 @@ footer{
 @media screen and (min-Width:320px) and (max-width:720px) {
     h1,h2{
         padding: .5rem;
-        color: #fff;
+        color: var(--white);
         font-weight: normal;
     }
     h1{
