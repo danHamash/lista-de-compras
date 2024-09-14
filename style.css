@@ -93,7 +93,7 @@ input:checked{
     width: 100%;
 }
 .alimentos{
-    margin-top:5rem ;
+    margin-top:1rem ;
 }
 :checked + label{
     color: var(--checked);
@@ -238,6 +238,6 @@ footer{
         flex-shrink: 0;
     }
     .descricao span {
-        margin-left: .5rem;
+        margin: .5rem 1rem;
     }
 }
