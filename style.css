@@ -240,4 +240,7 @@ footer{
     .descricao span {
         margin: .5rem 1rem;
     }
+    .container div:has(input:checked) {
+        margin-left: 2.5rem;
+    }
 }
