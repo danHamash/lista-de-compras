@@ -188,7 +188,7 @@ footer{
 }
 @media screen and (min-Width:320px) and (max-width:720px) {
     h1,h2{
-        padding: .5rem;
+        padding: .5rem 0;
         color: var(--white);
         font-weight: normal;
     }
