@@ -82,7 +82,6 @@ function shareList() {
                 document.getElementById('share-result').textContent = 'Erro ao compartilhar a lista.';
             });
     } else {
-        // Fallback para copiar o texto para a área de transferência
         navigator.clipboard.writeText(sharedText).then(() => {
             document.getElementById('share-result').textContent = 'Lista copiada para a área de transferência!';
         }).catch(err => {
