@@ -124,7 +124,7 @@ function loadItems(section) {
                 onchange="updateItem('${section}', '${item.name}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
             <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" value="${item.value}" 
                 onchange="updateItem('${section}', '${item.name}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
-            <span class="total">Total: R$ ${item.total.toFixed(2)}</span>
+            <span class="total">Total: R$ ${item.total}</span>
             <button onclick="deleteItem(this, '${section}', '${item.name}')">Excluir</button>
         `;
         sectionDiv.appendChild(newItemDiv);
