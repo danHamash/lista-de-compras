@@ -59,6 +59,15 @@ input{
 label{
     font-size: 1.5rem;
 }
+input.value {
+    margin-right: 3rem;
+    width: 110px;
+    height: 40px;
+}
+input.value::placeholder {
+    margin: 1rem;
+}
+
 input:checked{
     margin: 0 10px 0 10px ;
     accent-color: var(--checked);
