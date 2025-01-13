@@ -272,6 +272,7 @@ footer{
         font-size: .8rem;
     }
     input.value,.quantity{
+        margin: .2rem;
         height: 20px;
         max-width: 30px;
         font-size: 1rem;
