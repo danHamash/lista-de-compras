@@ -285,7 +285,8 @@ footer{
         font-size:1rem ;
     }
     #result-geral{
-        font-size: 1rem;
+        font-size: .8rem;
+        margin: 0;
     }
     footer{
         text-align: center;
