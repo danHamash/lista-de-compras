@@ -55,8 +55,8 @@ function addItem(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <label>${itemText}</label>
             <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1">
+            <label>${itemText}</label>
             <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01">
             <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
         `;
