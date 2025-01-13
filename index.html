@@ -163,33 +163,6 @@
         calculateGrandTotal();
       }
 
-      function calculateTotal(section) {
-        const sectionDiv = document.querySelector(`#${section}`);
-        const values = sectionDiv.querySelectorAll(".value");
-        const quantities = sectionDiv.querySelectorAll(".quantity");
-        const totals = sectionDiv.querySelectorAll(".total");
-
-        let total = 0;
-        let totalQuantity = 0;
-
-        values.forEach((input, index) => {
-          const value = parseFloat(input.value) || 0;
-          const quantity = parseInt(quantities[index].value) || 1;
-          const itemTotal = value * quantity;
-
-          totals[index].textContent = `Total:R$ ${itemTotal.toFixed(2)}`
-          total += itemTotal;
-          totalQuantity += quantity;
-        });
-
-        const resultDiv = document.getElementById(`result-${section}`);
-        if (resultDiv) {
-          resultDiv.textContent = `Total da seção: R$ ${total.toFixed(
-            2
-          )} | Quantidade total: ${totalQuantity}`;
-        }
-      }
-
       function calculateGrandTotal() {
         const allSections = ["alimentos", "limpeza"];
         let grandTotal = 0;
