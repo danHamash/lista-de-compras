@@ -15,7 +15,10 @@
                  há uma caixa de seleção que pode ser marcada para indicar a conclusão da compra ou que o item foi adquirido.
                  Além disso, cada item possui um botão 'Excluir', permitindo removê-lo da lista de forma rápida e eficiente."</span>
         </div>
-        
+        <div id="compartilhar" >
+            <button class="share" onclick="shareList()">Compartilhar Lista</button>
+            <div id="share-result" class="share-mensage"></div>
+        </div>
         <section id="alimentos">
             <h2>Alimentos</h2>
             <button onclick="addItem('alimentos')" class="add-button">Adicionar</button>
@@ -27,7 +30,6 @@
             <button onclick="addItem('limpeza')" class="add-button">Adicionar</button>
             <input id="inputLimpeza" type="text" placeholder="Adicionar item">
         </section>
-    
         <div id="total-geral">
             <button class="total-button" onclick="calculateGrandTotal()">Calcular Total</button>
             <div id="result-geral"></div>
@@ -141,6 +143,41 @@ function calculateGrandTotal() {
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function shareList() {
+    const allSections = ['alimentos', 'limpeza'];
+    let listContent = 'Lista de Compras:\n\n';
+
+    allSections.forEach(section => {
+        const sectionDiv = document.querySelector(`#${section}`);
+        const items = sectionDiv.querySelectorAll('.item-container');
+        if (items.length > 0) {
+            listContent += `${capitalizeFirstLetter(section)}:\n`;
+            items.forEach(item => {
+                const label = item.querySelector('label').textContent;
+                const quantity = item.querySelector('.quantity').value || 1;
+                const value = item.querySelector('.value').value || 0;
+                listContent += `- ${label}: Quantidade ${quantity}, Valor Unitário R$ ${parseFloat(value).toFixed(2)}\n`;
+            });
+            listContent += '\n';
+        }
+    });
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'Minha Lista de Compras',
+            text: listContent,
+        })
+            .then(() => {
+                document.getElementById('share-result').textContent = 'Lista Enviada!';
+            })
+            .catch(err => {
+                document.getElementById('share-result').textContent = 'Erro ao compartilhar: ' + err.message;
+            });
+    } else {
+        document.getElementById('share-result').textContent =
+            'Compartilhamento não suportado neste navegador. Copie e cole manualmente: \n\n' + listContent;
+    }
 }
 
 </script>

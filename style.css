@@ -145,7 +145,6 @@ input:checked{
     margin-left: 2.5rem;
     background: var(--checked-bg);
     border-radius: 9px;
-    max-width: 700px;
     margin-bottom:10px ;
  }
 .container{
@@ -176,11 +175,23 @@ input:checked{
 #inputAlimentos:placeholder-shown{
    font-size: 1.5rem;
 }
-.add-button,.total-button{
+.add-button,.total-button,.share{
     margin-left:40px ;
     padding: 10px;
     font-size: 1.5rem;
     height: 60px;
+}
+#compartilhar, #share-result{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.share-mensage{
+    letter-spacing: 2px;
+    color: var(--checked-bg);
+    text-align: center;
 }
 button {
     text-transform: uppercase;
