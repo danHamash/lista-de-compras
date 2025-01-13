@@ -177,7 +177,7 @@
           const quantity = parseInt(quantities[index].value) || 1;
           const itemTotal = value * quantity;
 
-          totals[index].textContent = `Total: R$ ${itemTotal.toFixed(2)}`;
+          totals[index].textContent = `Total:R$ ${itemTotal.toFixed(2)}`
           total += itemTotal;
           totalQuantity += quantity;
         });
