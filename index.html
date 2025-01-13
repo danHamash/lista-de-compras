@@ -127,8 +127,7 @@
         items.forEach((item) => {
           const newItemDiv = document.createElement("div");
           newItemDiv.classList.add("item-container");
-          newItemDiv.innerHTML = `
-            <input type="checkbox"> 
+          newItemDiv.innerHTML = `<input type="checkbox"> 
             <label>${item.name}</label>
             <input type="number" class="quantity" placeholder="un" min="1" value="${
               item.quantity
