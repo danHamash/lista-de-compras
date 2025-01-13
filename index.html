@@ -27,8 +27,8 @@
           Adicionar
         </button>
         <input id="inputAlimentos" type="text" placeholder="Adicionar item" />
+        <span>un</span>
       </section>
-
       <section id="limpeza">
         <h2>Limpeza</h2>
         <button onclick="addItem('limpeza')" class="add-button">
@@ -60,10 +60,10 @@ function addItem(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1" 
+            <input type="number" class="quantity" placeholder="Un" min="1" value="1" 
                 onchange="updateItem('${section}', '${itemText}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
                 <label>${itemText}</label>
-            <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" 
+            <input type="number" class="value" placeholder="R$" min="0" step="0.01" 
                 onchange="updateItem('${section}', '${itemText}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <span class="total">Total: R$ 0.00</span>
             <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
@@ -119,7 +119,7 @@ function loadItems(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <input type="number" class="quantity" placeholder="un" min="0" value="${item.quantity}" 
+            <input type="number" class="quantity" placeholder="Un" min="0" value="${item.quantity}" 
                 onchange="updateItem('${section}', '${item.name}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
                 <label>${item.name}</label>
             <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" value="${item.value}" 
