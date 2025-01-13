@@ -1,186 +1,222 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Compras</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <main class="container">
-        <div class="descricao">
-            <h1 class="title">Lista de Compras</h1>
-            <span> Bem vindo a sua Lista de compras.<br>
-                 Aqui você adiciona o item, a quantidade e o valor e eu faço o resto. 
-                <br>
-                <p>boas compras!</p>
-            </span>
-        </div>
-        <div id="compartilhar" >
-            <button class="share" onclick="shareList()">Compartilhar Lista</button>
-            <div id="share-result" class="share-mensage"></div>
-        </div>
-        <section id="alimentos">
-            <h2>Alimentos</h2>
-            <button onclick="addItem('alimentos')" class="add-button">Adicionar</button>
-            <input id="inputAlimentos" type="text" placeholder="Adicionar item">
-        </section>
-        
-        <section id="limpeza">
-            <h2>Limpeza</h2>
-            <button onclick="addItem('limpeza')" class="add-button">Adicionar</button>
-            <input id="inputLimpeza" type="text" placeholder="Adicionar item">
-        </section>
-        <div id="total-geral">
-            <button class="total-button" onclick="calculateGrandTotal()">Calcular Total</button>
-            <div id="result-geral"></div>
-        </div>
+      <div class="descricao">
+        <h1 class="title">Lista de Compras</h1>
+        <span>
+          Bem vindo a sua Lista de compras.<br />
+          Aqui você adiciona o item, a quantidade e o valor e eu faço o resto.
+          <br />
+          <p>boas compras!</p>
+        </span>
+      </div>
+      <div id="compartilhar">
+        <button class="share" onclick="shareList()">Compartilhar Lista</button>
+        <div id="share-result" class="share-mensage"></div>
+      </div>
+      <section id="alimentos">
+        <h2>Alimentos</h2>
+        <button onclick="addItem('alimentos')" class="add-button">
+          Adicionar
+        </button>
+        <input id="inputAlimentos" type="text" placeholder="Adicionar item" />
+      </section>
+
+      <section id="limpeza">
+        <h2>Limpeza</h2>
+        <button onclick="addItem('limpeza')" class="add-button">
+          Adicionar
+        </button>
+        <input id="inputLimpeza" type="text" placeholder="Adicionar item" />
+      </section>
+      <div id="total-geral">
+        <button class="total-button" onclick="calculateGrandTotal()">
+          Calcular Total
+        </button>
+        <div id="result-geral"></div>
+      </div>
     </main>
-<footer>
-    © [2024] [Tech.GG/C.Daniel]. Todos os direitos reservados.
-</footer>
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-    loadItems('alimentos');
-    loadItems('limpeza');
-});
+    <footer>© [2024] [Tech.GG/C.Daniel]. Todos os direitos reservados.</footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        loadItems("alimentos");
+        loadItems("limpeza");
+      });
 
-function addItem(section) {
-    const input = document.getElementById(`input${capitalizeFirstLetter(section)}`);
-    const itemText = input.value.trim();
+      function addItem(section) {
+        const input = document.getElementById(
+          `input${capitalizeFirstLetter(section)}`
+        );
+        const itemText = input.value.trim();
 
-    if (itemText !== '') {
-        const sectionDiv = document.querySelector(`#${section}`);
-        const newItemDiv = document.createElement('div');
-        newItemDiv.classList.add('item-container');
-        newItemDiv.innerHTML = `
+        if (itemText !== "") {
+          const sectionDiv = document.querySelector(`#${section}`);
+          const newItemDiv = document.createElement("div");
+          newItemDiv.classList.add("item-container");
+          newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1">
-            <label>${itemText}</label>
-            <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01">
+            
+                <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1" 
+                onchange="updateItem('${section}', '${itemText}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
+    <label>${itemText}</label>
+            <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" 
+                onchange="updateItem('${section}', '${itemText}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
         `;
-        sectionDiv.insertBefore(newItemDiv, input.nextSibling);
+          sectionDiv.insertBefore(newItemDiv, input.nextSibling);
 
-        saveItem(section, itemText);
-        input.value = '';
-    } else {
-        alert('Por favor, digite um item!');
-    }
-}
+          saveItem(section, itemText, 1, 0);
+          input.value = "";
+        } else {
+          alert("Por favor, digite um item!");
+        }
+      }
 
-function saveItem(section, itemText) {
-    let items = JSON.parse(localStorage.getItem(section)) || [];
-    items.push(itemText);
-    localStorage.setItem(section, JSON.stringify(items));
-}
+      function saveItem(section, itemName, quantity = 1, value = 0) {
+        let items = JSON.parse(localStorage.getItem(section)) || [];
+        const existingItemIndex = items.findIndex(
+          (item) => item.name === itemName
+        );
 
-function loadItems(section) {
-    const items = JSON.parse(localStorage.getItem(section)) || [];
-    const sectionDiv = document.querySelector(`#${section}`);
+        const total = quantity * value;
 
-    items.forEach(item => {
-        const newItemDiv = document.createElement('div');
-        newItemDiv.classList.add('item-container');
-        newItemDiv.innerHTML = `
-            <input type="checkbox"> 
-            <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1">
-            <label>${item}</label>
-            <input type="number" class="value" placeholder="R$" min="0" step="0.01">
-            <button onclick="deleteItem(this, '${section}', '${item}')">Excluir</button>
-        `;
-        sectionDiv.appendChild(newItemDiv);
-    });
-}
+        if (existingItemIndex >= 0) {
+          items[existingItemIndex] = { name: itemName, quantity, value, total };
+        } else {
+          items.push({ name: itemName, quantity, value, total });
+        }
 
-function deleteItem(button, section, itemText) {
-    
-    const itemDiv = button.parentElement;
-    itemDiv.remove();
+        localStorage.setItem(section, JSON.stringify(items));
+      }
 
-    
-    let items = JSON.parse(localStorage.getItem(section)) || [];
-    items = items.filter(item => item !== itemText);
-    localStorage.setItem(section, JSON.stringify(items));
-}
+      function updateItem(
+        section,
+        itemName,
+        newQuantity = null,
+        newValue = null
+      ) {
+        let items = JSON.parse(localStorage.getItem(section)) || [];
+        const itemIndex = items.findIndex((item) => item.name === itemName);
 
-function calculateTotal(section) {
-    const sectionDiv = document.querySelector(`#${section}`);
-    const values = sectionDiv.querySelectorAll('.value');
-    const quantities = sectionDiv.querySelectorAll('.quantity');
-    let total = 0;
-    let totalQuantity = 0;
+        if (itemIndex >= 0) {
+          if (newQuantity !== null) {
+            items[itemIndex].quantity = parseInt(newQuantity);
+          }
+          if (newValue !== null) {
+            items[itemIndex].value = parseFloat(newValue);
+          }
 
-    values.forEach((input, index) => {
-        const value = parseFloat(input.value) || 0;
-        const quantity = parseInt(quantities[index].value) || 1;
-        total += value * quantity;
-        totalQuantity += quantity;
-    });
+          items[itemIndex].total =
+            items[itemIndex].quantity * items[itemIndex].value;
 
-    const resultDiv = document.getElementById(`result-${section}`);
-    resultDiv.textContent = `Total da seção: R$ ${total.toFixed(2)} | Quantidade total: ${totalQuantity}`;
-}
+          localStorage.setItem(section, JSON.stringify(items));
+        }
+      }
 
-function calculateGrandTotal() {
-    const allSections = ['alimentos', 'limpeza'];
-    let grandTotal = 0;
-
-    allSections.forEach(section => {
+      function loadItems(section) {
+        const items = JSON.parse(localStorage.getItem(section)) || [];
         const sectionDiv = document.querySelector(`#${section}`);
-        const values = sectionDiv.querySelectorAll('.value');
-        const quantities = sectionDiv.querySelectorAll('.quantity');
+
+        items.forEach((item) => {
+          const newItemDiv = document.createElement("div");
+          newItemDiv.classList.add("item-container");
+          newItemDiv.innerHTML = `
+            <input type="checkbox"> 
+            <label>${item.name}</label>
+            <input type="number" class="quantity" placeholder="Quantidade" min="1" value="${
+              item.quantity
+            }" 
+                onchange="updateItem('${section}', '${
+            item.name
+          }', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
+            <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" value="${
+              item.value
+            }" 
+                onchange="updateItem('${section}', '${
+            item.name
+          }', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
+            <span class="total">Total: R$ ${item.total.toFixed(2)}</span>
+            <button onclick="deleteItem(this, '${section}', '${
+            item.name
+          }')">Excluir</button>
+        `;
+          sectionDiv.appendChild(newItemDiv);
+        });
+
+        calculateTotal(section);
+      }
+
+      function deleteItem(button, section, itemName) {
+        const itemDiv = button.parentElement;
+        itemDiv.remove();
+
+        let items = JSON.parse(localStorage.getItem(section)) || [];
+        items = items.filter((item) => item.name !== itemName);
+        localStorage.setItem(section, JSON.stringify(items));
+
+        calculateTotal(section);
+        calculateGrandTotal();
+      }
+
+      function calculateTotal(section) {
+        const sectionDiv = document.querySelector(`#${section}`);
+        const values = sectionDiv.querySelectorAll(".value");
+        const quantities = sectionDiv.querySelectorAll(".quantity");
+        const totals = sectionDiv.querySelectorAll(".total");
+
+        let total = 0;
+        let totalQuantity = 0;
 
         values.forEach((input, index) => {
+          const value = parseFloat(input.value) || 0;
+          const quantity = parseInt(quantities[index].value) || 1;
+          const itemTotal = value * quantity;
+
+          totals[index].textContent = `Total: R$ ${itemTotal.toFixed(2)}`;
+          total += itemTotal;
+          totalQuantity += quantity;
+        });
+
+        const resultDiv = document.getElementById(`result-${section}`);
+        if (resultDiv) {
+          resultDiv.textContent = `Total da seção: R$ ${total.toFixed(
+            2
+          )} | Quantidade total: ${totalQuantity}`;
+        }
+      }
+
+      function calculateGrandTotal() {
+        const allSections = ["alimentos", "limpeza"];
+        let grandTotal = 0;
+
+        allSections.forEach((section) => {
+          const sectionDiv = document.querySelector(`#${section}`);
+          const values = sectionDiv.querySelectorAll(".value");
+          const quantities = sectionDiv.querySelectorAll(".quantity");
+
+          values.forEach((input, index) => {
             const value = parseFloat(input.value) || 0;
             const quantity = parseInt(quantities[index].value) || 1;
             grandTotal += value * quantity;
+          });
         });
-    });
 
-    const resultDiv = document.getElementById('result-geral');
-    resultDiv.textContent = `Total: R$ ${grandTotal.toFixed(2)}`;
-}
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-function shareList() {
-    const allSections = ['alimentos', 'limpeza'];
-    let listContent = 'Lista de Compras:\n\n';
-
-    allSections.forEach(section => {
-        const sectionDiv = document.querySelector(`#${section}`);
-        const items = sectionDiv.querySelectorAll('.item-container');
-        if (items.length > 0) {
-            listContent += `${capitalizeFirstLetter(section)}:\n`;
-            items.forEach(item => {
-                const label = item.querySelector('label').textContent;
-                const quantity = item.querySelector('.quantity').value || 1;
-                const value = item.querySelector('.value').value || 0;
-                listContent += `- ${label}: Quantidade ${quantity},  R$ ${parseFloat(value).toFixed(2)}\n`;
-            });
-            listContent += '\n';
+        const resultDiv = document.getElementById("result-geral");
+        if (resultDiv) {
+          resultDiv.textContent = `Total: R$ ${grandTotal.toFixed(2)}`;
         }
-    });
+      }
 
-    if (navigator.share) {
-        navigator.share({
-            title: 'Minha Lista de Compras',
-            text: listContent,
-        })
-            .then(() => {
-                document.getElementById('share-result').textContent = 'Lista Enviada!';
-            })
-            .catch(err => {
-                document.getElementById('share-result').textContent = 'Erro ao compartilhar: ' + err.message;
-            });
-    } else {
-        document.getElementById('share-result').textContent =
-            'Compartilhamento não suportado neste navegador. Copie e cole manualmente: \n\n' + listContent;
-    }
-}
-
-</script>
-</body>
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+    </script>
+  </body>
 </html>
