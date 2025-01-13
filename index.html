@@ -48,7 +48,49 @@
     loadItems('alimentos');
     loadItems('limpeza');
 });
+function shareList() {
+    // Crie uma representação textual da lista
+    const allSections = ['alimentos', 'limpeza'];
+    let sharedText = 'Lista de Compras:\n\n';
 
+    allSections.forEach(section => {
+        const sectionDiv = document.querySelector(`#${section}`);
+        const items = sectionDiv.querySelectorAll('.item-container');
+
+        if (items.length > 0) {
+            sharedText += `${capitalizeFirstLetter(section)}:\n`;
+            items.forEach(item => {
+                const name = item.querySelector('label').textContent;
+                const quantity = item.querySelector('.quantity').value || '1';
+                const value = item.querySelector('.value').value || '0.00';
+                sharedText += `- ${name}: ${quantity} unidade(s) a R$ ${value}\n`;
+            });
+            sharedText += '\n';
+        }
+    });
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'Minha Lista de Compras',
+            text: sharedText,
+        })
+            .then(() => {
+                document.getElementById('share-result').textContent = 'Lista compartilhada com sucesso!';
+            })
+            .catch(err => {
+                console.error('Erro ao compartilhar:', err);
+                document.getElementById('share-result').textContent = 'Erro ao compartilhar a lista.';
+            });
+    } else {
+        // Fallback para copiar o texto para a área de transferência
+        navigator.clipboard.writeText(sharedText).then(() => {
+            document.getElementById('share-result').textContent = 'Lista copiada para a área de transferência!';
+        }).catch(err => {
+            console.error('Erro ao copiar:', err);
+            document.getElementById('share-result').textContent = 'Erro ao copiar a lista.';
+        });
+    }
+}
 function addItem(section) {
     const input = document.getElementById(`input${capitalizeFirstLetter(section)}`);
     const itemText = input.value.trim();
