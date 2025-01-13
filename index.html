@@ -65,7 +65,7 @@
             
                 <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1" 
                 onchange="updateItem('${section}', '${itemText}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
-    <label>${itemText}</label>
+            <label>${itemText}</label>
             <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" 
                 onchange="updateItem('${section}', '${itemText}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
