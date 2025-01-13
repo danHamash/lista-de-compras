@@ -60,9 +60,9 @@ function addItem(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <label>${itemText}</label>
             <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1" 
                 onchange="updateItem('${section}', '${itemText}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
+                <label>${itemText}</label>
             <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" 
                 onchange="updateItem('${section}', '${itemText}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <span class="total">Total: R$ 0.00</span>
@@ -119,9 +119,9 @@ function loadItems(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <label>${item.name}</label>
             <input type="number" class="quantity" placeholder="un" min="0" value="${item.quantity}" 
                 onchange="updateItem('${section}', '${item.name}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
+                <label>${item.name}</label>
             <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" value="${item.value}" 
                 onchange="updateItem('${section}', '${item.name}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <span class="total">Total: R$ ${item.total}</span>
