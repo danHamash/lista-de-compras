@@ -18,7 +18,7 @@
         </span>
       </div>
       <div id="compartilhar">
-        <button class="share" onclick="shareList()">Compartilhar Lista</button>
+        <button class="share" onclick="shareList()">Enviar Lista</button>
         <div id="share-result" class="share-mensage"></div>
       </div>
       <section id="alimentos">
@@ -49,7 +49,7 @@
     loadItems('limpeza');
 });
 function shareList() {
-    // Crie uma representação textual da lista
+    
     const allSections = ['alimentos', 'limpeza'];
     let sharedText = 'Lista de Compras:\n\n';
 
@@ -75,15 +75,15 @@ function shareList() {
             text: sharedText,
         })
             .then(() => {
-                document.getElementById('share-result').textContent = 'Lista compartilhada com sucesso!';
+                document.getElementById('share-result').textContent = 'Lista enviada com sucesso!';
             })
             .catch(err => {
                 console.error('Erro ao compartilhar:', err);
-                document.getElementById('share-result').textContent = 'Erro ao compartilhar a lista.';
+                document.getElementById('share-result').textContent = 'Erro ao enviar a lista.';
             });
     } else {
         navigator.clipboard.writeText(sharedText).then(() => {
-            document.getElementById('share-result').textContent = 'Lista copiada para a área de transferência!';
+            document.getElementById('share-result').textContent = 'Lista copiada!';
         }).catch(err => {
             console.error('Erro ao copiar:', err);
             document.getElementById('share-result').textContent = 'Erro ao copiar a lista.';
