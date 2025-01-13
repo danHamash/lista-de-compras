@@ -53,7 +53,8 @@ function addItem(section) {
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
             <label>${itemText}</label>
-            <input type="number" class="value" placeholder="Valor">
+            <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1">
+            <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01">
             <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
         `;
         sectionDiv.insertBefore(newItemDiv, input.nextSibling);
@@ -80,8 +81,9 @@ function loadItems(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
+            <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1">
             <label>${item}</label>
-            <input type="number" class="value" placeholder="Valor">
+            <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01">
             <button onclick="deleteItem(this, '${section}', '${item}')">Excluir</button>
         `;
         sectionDiv.appendChild(newItemDiv);
@@ -89,11 +91,11 @@ function loadItems(section) {
 }
 
 function deleteItem(button, section, itemText) {
-    
+    // Remove item da interface
     const itemDiv = button.parentElement;
     itemDiv.remove();
 
-    
+    // Remove item do localStorage
     let items = JSON.parse(localStorage.getItem(section)) || [];
     items = items.filter(item => item !== itemText);
     localStorage.setItem(section, JSON.stringify(items));
@@ -102,15 +104,19 @@ function deleteItem(button, section, itemText) {
 function calculateTotal(section) {
     const sectionDiv = document.querySelector(`#${section}`);
     const values = sectionDiv.querySelectorAll('.value');
+    const quantities = sectionDiv.querySelectorAll('.quantity');
     let total = 0;
+    let totalQuantity = 0;
 
-    values.forEach(input => {
+    values.forEach((input, index) => {
         const value = parseFloat(input.value) || 0;
-        total += value;
+        const quantity = parseInt(quantities[index].value) || 1;
+        total += value * quantity;
+        totalQuantity += quantity;
     });
 
     const resultDiv = document.getElementById(`result-${section}`);
-    resultDiv.textContent = `Total da seção: R$ ${total.toFixed(2)}`;
+    resultDiv.textContent = `Total da seção: R$ ${total.toFixed(2)} | Quantidade total: ${totalQuantity}`;
 }
 
 function calculateGrandTotal() {
@@ -120,20 +126,23 @@ function calculateGrandTotal() {
     allSections.forEach(section => {
         const sectionDiv = document.querySelector(`#${section}`);
         const values = sectionDiv.querySelectorAll('.value');
+        const quantities = sectionDiv.querySelectorAll('.quantity');
 
-        values.forEach(input => {
+        values.forEach((input, index) => {
             const value = parseFloat(input.value) || 0;
-            grandTotal += value;
+            const quantity = parseInt(quantities[index].value) || 1;
+            grandTotal += value * quantity;
         });
     });
 
     const resultDiv = document.getElementById('result-geral');
-    resultDiv.textContent = `Total: R$ ${grandTotal.toFixed(2)}`;
+    resultDiv.textContent = `Total Geral: R$ ${grandTotal.toFixed(2)}`;
 }
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
 </script>
 </body>
 </html>

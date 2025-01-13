@@ -118,6 +118,13 @@ input:checked{
     color: var(--checked);
     transition: 1s;
 }
+.quantity{
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    padding: .5rem;
+    text-align: center;
+}
 .item-container {
     display: flex;
     justify-content: space-between;
