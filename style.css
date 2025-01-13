@@ -272,11 +272,10 @@ footer{
         font-size: .8rem;
     }
     input.value,.quantity{
-        height: 20px;
-        max-width: 20px;
+        height: 15px;
+        max-width: 15px;
         font-size: 1rem;
         padding: 0;
-        margin: .3rem;
     }
     .total-button {
         margin: auto;
