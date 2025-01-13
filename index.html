@@ -63,7 +63,7 @@
           newItemDiv.innerHTML = `
             <input type="checkbox"> 
             
-                <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1" 
+                <input type="number" class="quantity" placeholder="un" min="1" value="1" 
                 onchange="updateItem('${section}', '${itemText}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
             <label>${itemText}</label>
             <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01" 
@@ -130,7 +130,7 @@
           newItemDiv.innerHTML = `
             <input type="checkbox"> 
             <label>${item.name}</label>
-            <input type="number" class="quantity" placeholder="Quantidade" min="1" value="${
+            <input type="number" class="quantity" placeholder="un" min="1" value="${
               item.quantity
             }" 
                 onchange="updateItem('${section}', '${
