@@ -73,7 +73,11 @@ input.value {
 input.value::placeholder {
     margin: 1rem;
 }
-
+.result{
+    position: absolute;
+    right: 1rem;
+    top: 15rem;
+}
 input:checked{
     margin: 0 10px 0 10px ;
     accent-color: var(--checked);
@@ -165,7 +169,7 @@ input:checked{
 #inputAlimentos:placeholder-shown{
    font-size: 1.5rem;
 }
-.add-button{
+.add-button,.total-button{
     margin-left:40px ;
     padding: 10px;
     font-size: 1.5rem;
@@ -181,7 +185,7 @@ button {
     background: var(--secundary-color);
     box-shadow: 3px 10px 9px var(--shadow);
 }
-button:hover{
+button:hover, .total-button:hover{
     background: var(--secundary-color-hover);
     color: var(--white);
     
@@ -194,6 +198,25 @@ ul {
 li {
     padding: 5px 0;
 }
+#total-geral{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+button.total{
+    font-size: 1.5rem;
+    padding: 1rem;
+    height: 60px;
+    display: flex;
+    background-color: var(--secundary-color);
+}
+#result-geral{
+    color: var(--checked-bg);
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    
+}   
 footer{
         text-align: center;
         font-size: 1.4rem;

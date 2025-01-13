@@ -7,100 +7,134 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="container">
-    <div class="descricao">
-        <h1 class="title">Lista de Compras</h1>
-        <span>"Este site de compras possui uma interface intuitiva, com um campo de input para adicionar novos itens à lista de compras.
-             Após inserir o nome do produto, basta clicar no botão 'Adicionar' para incluí-lo na lista. Ao lado de cada item,
-             há uma caixa de seleção que pode ser marcada para indicar a conclusão da compra ou que o item foi adquirido.
-             Além disso, cada item possui um botão 'Excluir', permitindo removê-lo da lista de forma rápida e eficiente." </span>
-    </div>
-    
-    <section id="alimentos">
-        <h2 class="alimentos">Alimentos</h2>
-        <button onclick="addItem('alimentos')" class="add-button">Adicionar</button>
-        <input id="inputAlimentos" type="text" placeholder="Adicionar item" >
+    <main class="container">
+        <div class="descricao">
+            <h1 class="title">Lista de Compras</h1>
+            <span>"Este site de compras possui uma interface intuitiva, com um campo de input para adicionar novos itens à lista de compras.
+                 Após inserir o nome do produto, basta clicar no botão 'Adicionar' para incluí-lo na lista. Ao lado de cada item,
+                 há uma caixa de seleção que pode ser marcada para indicar a conclusão da compra ou que o item foi adquirido.
+                 Além disso, cada item possui um botão 'Excluir', permitindo removê-lo da lista de forma rápida e eficiente."</span>
+        </div>
         
-    </section>
-    
-    <section id="limpeza">
-        <h2>Limpeza</h2>
-        <button onclick="addItem('limpeza')" class="add-button">Adicionar</button>
-        <input id="inputLimpeza" type="text" placeholder="Adicionar item" >
+        <section id="alimentos">
+            <h2>Alimentos</h2>
+            <button onclick="addItem('alimentos')" class="add-button">Adicionar</button>
+            <input id="inputAlimentos" type="text" placeholder="Adicionar item">
+        </section>
         
-    </section>
-</main>
+        <section id="limpeza">
+            <h2>Limpeza</h2>
+            <button onclick="addItem('limpeza')" class="add-button">Adicionar</button>
+            <input id="inputLimpeza" type="text" placeholder="Adicionar item">
+        </section>
+    
+        <div id="total-geral">
+            <button class="total-button" onclick="calculateGrandTotal()">Calcular Total</button>
+            <div id="result-geral"></div>
+        </div>
+    </main>
 <footer>
     © [2024] [Tech.GG/Daniel]. Todos os direitos reservados.
 </footer>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        loadItems('alimentos');
-        loadItems('limpeza');
-    });
-    
-    function addItem(section) {
-        const input = document.getElementById(`input${capitalizeFirstLetter(section)}`);
-        const itemText = input.value.trim();
-    
-        if (itemText !== '') {
-            const sectionDiv = document.querySelector(`#${section}`);
-            const newItemDiv = document.createElement('div');
-            newItemDiv.classList.add('item-container');
-            newItemDiv.innerHTML = `
-                <input type="checkbox"> 
-                <label>${itemText}</label>
-                <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
-            `;
-            sectionDiv.insertBefore(newItemDiv, input.nextSibling);
-    
-            
-            saveItem(section, itemText);
-    
-            input.value = '';
-        } else {
-            alert('Por favor, digite um item!');
-        }
-    }
-    
-    function saveItem(section, itemText) {
-        let items = JSON.parse(localStorage.getItem(section)) || [];
-        items.push(itemText);
-        localStorage.setItem(section, JSON.stringify(items));
-    }
-    
-    function loadItems(section) {
-        const items = JSON.parse(localStorage.getItem(section)) || [];
+    loadItems('alimentos');
+    loadItems('limpeza');
+});
+
+function addItem(section) {
+    const input = document.getElementById(`input${capitalizeFirstLetter(section)}`);
+    const itemText = input.value.trim();
+
+    if (itemText !== '') {
         const sectionDiv = document.querySelector(`#${section}`);
+        const newItemDiv = document.createElement('div');
+        newItemDiv.classList.add('item-container');
+        newItemDiv.innerHTML = `
+            <input type="checkbox"> 
+            <label>${itemText}</label>
+            <input type="number" class="value" placeholder="Valor">
+            <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
+        `;
+        sectionDiv.insertBefore(newItemDiv, input.nextSibling);
+
+        saveItem(section, itemText);
+        input.value = '';
+    } else {
+        alert('Por favor, digite um item!');
+    }
+}
+
+function saveItem(section, itemText) {
+    let items = JSON.parse(localStorage.getItem(section)) || [];
+    items.push(itemText);
+    localStorage.setItem(section, JSON.stringify(items));
+}
+
+function loadItems(section) {
+    const items = JSON.parse(localStorage.getItem(section)) || [];
+    const sectionDiv = document.querySelector(`#${section}`);
+
+    items.forEach(item => {
+        const newItemDiv = document.createElement('div');
+        newItemDiv.classList.add('item-container');
+        newItemDiv.innerHTML = `
+            <input type="checkbox"> 
+            <label>${item}</label>
+            <input type="number" class="value" placeholder="Valor">
+            <button onclick="deleteItem(this, '${section}', '${item}')">Excluir</button>
+        `;
+        sectionDiv.appendChild(newItemDiv);
+    });
+}
+
+function deleteItem(button, section, itemText) {
     
-        items.forEach(item => {
-            const newItemDiv = document.createElement('div');
-            newItemDiv.classList.add('item-container');
-            newItemDiv.innerHTML = `
-                <input type="checkbox"> 
-                <label>${item}</label>
-                <input id='value'type ="text" class='value' placeholder= "Valor">
-                <button onclick="deleteItem(this, '${section}', '${item}')">Excluir</button>
-                
-            `;
-            sectionDiv.appendChild(newItemDiv);
+    const itemDiv = button.parentElement;
+    itemDiv.remove();
+
+    
+    let items = JSON.parse(localStorage.getItem(section)) || [];
+    items = items.filter(item => item !== itemText);
+    localStorage.setItem(section, JSON.stringify(items));
+}
+
+function calculateTotal(section) {
+    const sectionDiv = document.querySelector(`#${section}`);
+    const values = sectionDiv.querySelectorAll('.value');
+    let total = 0;
+
+    values.forEach(input => {
+        const value = parseFloat(input.value) || 0;
+        total += value;
+    });
+
+    const resultDiv = document.getElementById(`result-${section}`);
+    resultDiv.textContent = `Total da seção: R$ ${total.toFixed(2)}`;
+}
+
+function calculateGrandTotal() {
+    const allSections = ['alimentos', 'limpeza'];
+    let grandTotal = 0;
+
+    allSections.forEach(section => {
+        const sectionDiv = document.querySelector(`#${section}`);
+        const values = sectionDiv.querySelectorAll('.value');
+
+        values.forEach(input => {
+            const value = parseFloat(input.value) || 0;
+            grandTotal += value;
         });
-    }
-    
-    function deleteItem(button, section, itemText) {
-        // Remove item from UI
-        const itemDiv = button.parentElement;
-        itemDiv.remove();
-    
-        // Remove item from localStorage
-        let items = JSON.parse(localStorage.getItem(section)) || [];
-        items = items.filter(item => item !== itemText);
-        localStorage.setItem(section, JSON.stringify(items));
-    }
-    
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    </script>
+    });
+
+    const resultDiv = document.getElementById('result-geral');
+    resultDiv.textContent = `Total Geral: R$ ${grandTotal.toFixed(2)}`;
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+</script>
 </body>
 </html>
