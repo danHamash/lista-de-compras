@@ -63,6 +63,12 @@ input.value {
     margin-right: 3rem;
     width: 110px;
     height: 40px;
+    font-family: roboto;
+    
+    font-size: 1.5rem;
+    
+    padding-left: 1rem;
+    
 }
 input.value::placeholder {
     margin: 1rem;
