@@ -205,7 +205,7 @@ button {
     border-radius: 9px;
     border: none;
     padding: 10px;
-    background: var(--secundary-color);
+    background: var(--checked-bg);
     box-shadow: 3px 10px 9px var(--shadow);
 }
 button:hover, .total-button:hover{
