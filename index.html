@@ -86,7 +86,7 @@ function loadItems(section) {
             <input type="checkbox"> 
             <input type="number" class="quantity" placeholder="Quantidade" min="1" value="1">
             <label>${item}</label>
-            <input type="number" class="value" placeholder="Valor Unitário" min="0" step="0.01">
+            <input type="number" class="value" placeholder="R$" min="0" step="0.01">
             <button onclick="deleteItem(this, '${section}', '${item}')">Excluir</button>
         `;
         sectionDiv.appendChild(newItemDiv);
@@ -94,11 +94,11 @@ function loadItems(section) {
 }
 
 function deleteItem(button, section, itemText) {
-    // Remove item da interface
+    
     const itemDiv = button.parentElement;
     itemDiv.remove();
 
-    // Remove item do localStorage
+    
     let items = JSON.parse(localStorage.getItem(section)) || [];
     items = items.filter(item => item !== itemText);
     localStorage.setItem(section, JSON.stringify(items));
@@ -158,7 +158,7 @@ function shareList() {
                 const label = item.querySelector('label').textContent;
                 const quantity = item.querySelector('.quantity').value || 1;
                 const value = item.querySelector('.value').value || 0;
-                listContent += `- ${label}: Quantidade ${quantity}, Valor Unitário R$ ${parseFloat(value).toFixed(2)}\n`;
+                listContent += `- ${label}: Quantidade ${quantity},  R$ ${parseFloat(value).toFixed(2)}\n`;
             });
             listContent += '\n';
         }
