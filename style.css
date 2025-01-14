@@ -26,8 +26,10 @@ body{
     font-family: "Roboto";
 }
 :root{
-    --secundary-color:#ff8801;
+    --secundary-color:#ce7106;
     --secundary-color-hover:#ce6f02;
+    --button-color:#DE2D10;
+    ----button-hover-color:#f8543b;
     --primary-color:#d8d6d6;
     --white:#fff;
     --black:#000;
@@ -38,6 +40,7 @@ body{
 
 h1, h2{
     font-size: 3rem;
+    color: var(--white);
     margin: 0 0 2rem 0;
     text-align: center;
     letter-spacing: 2px;
@@ -174,7 +177,8 @@ input:checked{
     padding: 10px;
     box-shadow: 3px 12px 9px var(--shadow);
 }
-.button-delete {margin-left: 90px;
+.button-delete {
+    margin-left: 90px;
 }
 #inputLimpeza, #inputAlimentos, button{
     margin: 1rem 1rem 1rem 0;
@@ -202,16 +206,17 @@ input:checked{
 button {
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: var(--white);
     cursor: pointer;
     border-radius: 9px;
     border: 1px solid var(--black);
     padding: 10px;
-    background: var(--secundary-color);
+    background: var(--button-color);
     box-shadow: 3px 10px 9px var(--shadow);
 }
 button:hover, .total-button:hover{
-    background: var(--secundary-color-hover);
-    color: var(--white);
+    background: var(----button-hover-color);
+    color: var(--black);
     
 }
 
