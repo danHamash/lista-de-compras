@@ -100,7 +100,7 @@ function addItem(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <input type="number" class="quantity" placeholder="Un" min="1" value="1" 
+            <input type="number" class="quantity" placeholder="Un" min="0" value=" " 
                 onchange="updateItem('${section}', '${itemText}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
                 <label>${itemText}</label>
             <input type="number" class="value" placeholder="R$" min="0" step="0.01" 
