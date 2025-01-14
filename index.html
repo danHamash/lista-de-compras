@@ -110,7 +110,7 @@ function addItem(section) {
         `;
         sectionDiv.insertBefore(newItemDiv, input.nextSibling);
 
-        saveItem(section, itemText, 1, 0);
+        saveItem(section, itemText, 0, 0);
         input.value = '';
     } else {
         alert('Por favor, digite um item!');
