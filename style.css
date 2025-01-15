@@ -321,9 +321,6 @@ footer{
     .title{
         font-size: 2rem;
     }
-    .item-container{
-        margin-right: .8rem;
-    }
     .item-container button {
         width: 40px;
         height: 40px;
