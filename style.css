@@ -325,7 +325,7 @@ footer{
         margin-right: .8rem;
     }
     .item-container button {
-        width: 80px;
+        width: 40px;
         height: 40px;
         font-size: .8rem;
         flex-shrink: 0;
@@ -334,6 +334,6 @@ footer{
         margin: .5rem 1rem;
     }
     .container div:has(input:checked) {
-        margin-left: 2.5rem;
+        margin-left: 0;
     }
 }

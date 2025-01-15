@@ -106,7 +106,7 @@ function addItem(section) {
             <input type="number" class="value" placeholder="R$" min="0" step="0.01" 
                 onchange="updateItem('${section}', '${itemText}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <span class="total">Total: R$ 0.00</span>
-            <button onclick="deleteItem(this, '${section}', '${itemText}')">Excluir</button>
+            <button onclick="deleteItem(this, '${section}', '${itemText}')">X</button>
         `;
         sectionDiv.insertBefore(newItemDiv, input.nextSibling);
 
@@ -165,7 +165,7 @@ function loadItems(section) {
             <input type="number" class="value" placeholder="R$" min="0" step="0.01" value="${item.value}" 
                 onchange="updateItem('${section}', '${item.name}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <span class="total">Total: R$ ${item.total}</span>
-            <button onclick="deleteItem(this, '${section}', '${item.name}')">Excluir</button>
+            <button onclick="deleteItem(this, '${section}', '${item.name}')">X</button>
         `;
         sectionDiv.appendChild(newItemDiv);
     });
