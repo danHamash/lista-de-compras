@@ -316,7 +316,7 @@ footer{
         min-width: 120px;
     }
     #inputLimpeza, #inputAlimentos, button{
-        margin: 1rem 1rem 1rem .5rem;
+        margin: 1rem 1rem 1rem 0;
     }
     .title{
         font-size: 2rem;
@@ -325,7 +325,7 @@ footer{
         margin-right: .8rem;
     }
     .item-container button {
-        width: 20px;
+        width: 40px;
         height: 40px;
         font-size: .8rem;
         flex-shrink: 0;
