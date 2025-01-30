@@ -38,6 +38,7 @@ body{
 h1, h2{
     width: 400px;
     margin: 2rem auto;
+    margin-top: 5rem;
     font-size: 3rem;
     border-radius: 9px;
     border: 3px solid var(--black);
@@ -46,6 +47,9 @@ h1, h2{
     letter-spacing: 2px;
     text-transform: uppercase;
     background: var(--secundary-color);
+}
+h2{
+    margin-top: 5rem;
 }
 div{
     padding: 0 .1rem 1rem .2rem;
@@ -70,148 +74,7 @@ input.value {
     font-size: 1.5rem;
     padding-left: 1rem;
 }
-.total{
-    margin-right: 1rem;
-    font-size: 1.5rem;
-}
-input.value::placeholder {
-    margin: 1rem;
-}
-.result{
-    position: absolute;
-    right: 1rem;
-    top: 15rem;
-}
-input:checked{
-    margin: 0 10px 0 10px ;
-    accent-color: var(--checked);
-    box-shadow: 0 0 5px 2px var(--secundary-color) ;
-    
-}
-.descricao{
-    margin: 0;
-    padding: 0;
-    margin-top: 5rem;
-    display: flex;
-    justify-items: center;
-    width: 100%;
-}
-.descricao span{
-    font-family: "Roboto", sans-serif;
-    font-size: 2rem;
-    color: var(--white);
-    font-weight: 900;
-    text-align: center;
-    margin: 5rem auto;
-    padding: 1rem;
-    background: var(--secundary-color) ;
-    border: 3px solid var(--black);
-    border-radius:9px;
-    width: 600px;
-}
-.descricao p{
-    font-weight: 400;
-    margin-top: .5rem;
-    font-size: 2rem;
-}
-.title{
-    text-align: center;
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    top: 0;
-    font-size: 3rem;
-    margin-top: 0;
-    width: 100%;
-}
-.alimentos{
-    margin-top:1rem ;
-}
-:checked + label{
-    color: var(--checked);
-    transition: 1s;
-}
-.quantity{
-    width: 70px;
-    height: 40px;
-    font-size: 2rem;
-    padding: .5rem;
-    text-align: center;
-    font-family: 'Roboto';
-}
-.item-container {
-    width: 90%;
-    border-radius: 9px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-    background: var(--secundary-color);
-}
-.item-container label {
-    flex: 1;
-    margin-right: 10px;
-}
-.item-container button {
-    font-size: 1.5rem;
-    width: 150px;
-    height: 60px;
-    flex-shrink: 0;
-}
- .container div:has(input:checked) {
-    margin-left: 2.5rem;
-    background: var(--checked-bg);
-    border-radius: 9px;
-    margin-bottom:10px ;
- }
-.container{
-    background-color: var(--primary-color);
-    margin: 20px auto;
-    border-radius: 9px;
-}
-#inputLimpeza:focus, #inputAlimentos:focus{
-    border: 2px solid var(--secundary-color);
-}
-#inputLimpeza, #inputAlimentos {
-    font-family: "Roboto", sans-serif;
-    letter-spacing: 1px;
-    outline: none;
-    border: 3px solid var(--black);
-    font-size: 1.5rem;
-    min-width: 200px;
-    min-height: 50px;
-    margin-right: 10px;
-    padding: 10px;
-}
-.button-delete {
-    margin-left: 90px;
-}
-#inputLimpeza, #inputAlimentos, button{
-    margin: 1rem 1rem 1rem 0;
-}
-#inputAlimentos:placeholder-shown{
-   font-size: 1.5rem;
-}
-.add-button,.total-button,.share{
-    margin-left:40px ;
-    padding: 10px;
-    font-size: 1.5rem;
-    height: 60px;
-}
-#compartilhar, #share-result{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.share-mensage{
-    letter-spacing: 2px;
-    color: var(--checked-bg);
-    text-align: center;
-}
+
 button {
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -235,10 +98,16 @@ ul {
 li {
     padding: 5px 0;
 }
-#total-geral{
-    display: flex;
-    justify-content: center;
-    margin: auto;
+
+input.value::placeholder {
+    margin: 1rem;
+}
+
+input:checked{
+    margin: 0 10px 0 10px ;
+    accent-color: var(--checked);
+    box-shadow: 0 0 5px 2px var(--secundary-color) ;
+    
 }
 button.total{
     font-size: 1.5rem;
@@ -246,6 +115,147 @@ button.total{
     height: 60px;
     display: flex;
     background-color: var(--secundary-color);
+}
+.total{
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+.result{
+    position: absolute;
+    right: 1rem;
+    top: 15rem;
+}
+.descricao{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 1rem;
+    width: 100%;
+}
+.descricao span{
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    color: var(--white);
+    font-weight: 900;
+    text-align: center;
+    margin: 5rem auto;
+    padding: 1rem;
+    background: var(--secundary-color) ;
+    border: 3px solid var(--black);
+    border-radius:9px;
+    width: 600px;
+}
+.descricao p{
+    font-weight: 400;
+    margin-top: .5rem;
+    font-size: 2rem;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    top: 0;
+    font-size: 3rem;
+    margin-top: 0;
+    width: 600px;
+}
+.alimentos{
+    margin-top:1rem ;
+}
+:checked + label{
+    color: var(--checked);
+    transition: 1s;
+}
+.quantity{
+    width: 70px;
+    height: 40px;
+    padding: .5rem;
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Roboto';
+}
+.item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 5px 0;
+    background: var(--secundary-color);
+    border-radius: 9px;
+    color:var(--white);
+}
+.item-container label {
+    flex: 1;
+    margin-right: 10px;
+}
+.item-container button {
+    font-size: 1.5rem;
+    width: 150px;
+    height: 60px;
+    flex-shrink: 0;
+}
+ .container div:has(input:checked) {
+    margin-left: 2.5rem;
+    background: var(--checked-bg);
+    border-radius: 9px;
+    margin-bottom:10px ;
+ }
+.container{
+    background-color: var(--primary-color);
+    margin: 20px auto;
+    border-radius: 9px;
+}
+.share-mensage{
+    letter-spacing: 2px;
+    color: var(--checked-bg);
+    text-align: center;
+}
+.add-button,.total-button,.share{
+    margin-left:40px ;
+    padding: 10px;
+    font-size: 1.5rem;
+    height: 60px;
+}
+.add-button{
+    margin-left: 10%;
+}
+.button-delete {
+    margin-left: 90px;
+}
+#inputLimpeza:focus, #inputAlimentos:focus{
+    border: 2px solid var(--secundary-color);
+}
+#inputLimpeza, #inputAlimentos {
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1px;
+    outline: none;
+    border: 3px solid var(--black);
+    font-size: 1.5rem;
+    min-width: 200px;
+    min-height: 50px;
+    margin-right: 10px;
+    padding: 10px;
+}
+#inputLimpeza, #inputAlimentos, button{
+    margin: 1rem 1rem 1rem 0;
+}
+#inputAlimentos:placeholder-shown{
+   font-size: 1.5rem;
+}
+#compartilhar, #share-result{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#total-geral{
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
 #result-geral{
     color: var(--checked-bg);
@@ -281,7 +291,12 @@ footer{
         height: 20px;
         margin: 0 1rem 0 1rem;
     }
-    
+    footer{
+        text-align: center;
+        font-size: .7rem;
+        font-family: "Roboto";
+        padding: 0;
+    }
     label{
         font-size: .8rem;
     }
@@ -302,32 +317,10 @@ footer{
     .item-container span{
         font-size: 0;
     }
-    #result-geral{
-        font-size: 1rem;
-        padding: .2rem;
-        justify-items: center;
-    }
-    footer{
-        text-align: center;
-        font-size: .7rem;
-        font-family: "Roboto";
-        padding: 0;
-    }
-    .add-button{
-        font-size: 1rem;
-        margin: 0 0 0 .5rem;
-    }
-    #inputLimpeza, #inputAlimentos:placeholder-shown{
-        font-size: 1rem;
-        outline: none;
-        border: none;
-        min-width: 120px;
-    }
-    #inputLimpeza, #inputAlimentos, button{
-        margin: 1rem 1rem 1rem 0;
-    }
+    
     .title{
         font-size: 2rem;
+        width: 80%;
     }
     .item-container button {
         width: 40px;
@@ -337,8 +330,27 @@ footer{
     }
     .descricao span {
         margin: .5rem 1rem;
+        width: 80%;
     }
     .container div:has(input:checked) {
         margin-left: 0;
+    }
+    .add-button{
+        font-size: 1rem;
+        margin: 0 0 0 .5rem;
+    }
+    #result-geral{
+        font-size: 1rem;
+        padding: .2rem;
+        justify-items: center;
+    }
+    #inputLimpeza, #inputAlimentos:placeholder-shown{
+        font-size: 1rem;
+        outline: none;
+        border: none;
+        min-width: 120px;
+    }
+    #inputLimpeza, #inputAlimentos, button{
+        margin: 1rem 1rem 1rem 0;
     }
 }
