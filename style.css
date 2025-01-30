@@ -234,9 +234,6 @@ button.total{
 #inputLimpeza, #inputAlimentos, button{
     margin: 1rem 1rem 1rem 0;
 }
-#inputAlimentos:placeholder-shown{
-   font-size: 1.5rem;
-}
 #compartilhar, #share-result{
     display: flex;
     align-items: center;
@@ -346,7 +343,7 @@ footer{
         padding: .2rem;
         text-align: center;
     }
-    #inputLimpeza, #inputAlimentos:placeholder-shown{
+    #inputLimpeza, #inputAlimentos{
         font-size: 1rem;
         outline: none;
         padding: 0;
