@@ -22,6 +22,9 @@
 }
 body{
     background-image: url(https://lolstatic-a.akamaihd.net/rso-authenticator-ui/0.79.5/assets/riot_desktop_background_2x.jpg);
+    
+    background-position: center;
+    background-size: cover;
     font-family: "Roboto";
 }
 :root{
@@ -34,7 +37,6 @@ body{
     --checked-bg:#4f8314;
 }
 h1, h2{
-    width: 400px;
     margin: 2rem auto;
     margin-top: 5rem;
     font-size: 3rem;
@@ -260,6 +262,10 @@ footer{
         margin-bottom: 1rem;
 }
 @media screen and (min-Width:320px) and (max-width:720px) {
+    body{
+        background-position: center;
+        background-size: cover;
+    }
     h1,h2{
         width: 100%;
         padding: .5rem 0;
