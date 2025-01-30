@@ -16,7 +16,6 @@
     margin: 0;
     padding: 0;
     border: 0;
-
 }
 *{
     font-family: "Luckiest Guy", "Open Sanas", sans-serif;
@@ -34,7 +33,6 @@ body{
     --checked:#7bce1d;;
     --checked-bg:#4f8314;
 }
-
 h1, h2{
     width: 400px;
     margin: 2rem auto;
@@ -54,7 +52,6 @@ h2{
 div{
     padding: 0 .1rem 1rem .2rem;
 }
-
 input{
     cursor: pointer;
     font-weight: bold;
@@ -70,7 +67,6 @@ input.value {
     margin-right: 3rem;
     width: 110px;
     height: 40px;
-    font-family: "roboto";
     font-size: 1.5rem;
     padding-left: 1rem;
 }
@@ -86,27 +82,21 @@ button {
 }
 button:hover, .total-button:hover{
     background: var(----button-hover-color);
-    color: var(--black);
-    
+    color: var(--black); 
 }
-
 ul {
     margin-top: 20px;
 }
-
 li {
     padding: 5px 0;
 }
-
 input.value::placeholder {
     margin: 1rem;
 }
-
 input:checked{
     margin: 0 10px 0 10px ;
     accent-color: var(--checked);
     box-shadow: 0 0 5px 2px var(--secundary-color) ;
-    
 }
 button.total{
     font-size: 1.5rem;
@@ -134,7 +124,6 @@ button.total{
     width: 100%;
 }
 .descricao span{
-    font-family: "Roboto", sans-serif;
     font-size: 2rem;
     color: var(--white);
     font-weight: 900;
@@ -172,8 +161,9 @@ button.total{
     height: 40px;
     padding: .5rem;
     font-size: 2rem;
+}
+.quantity, .value{
     text-align: center;
-    font-family: 'Roboto';
 }
 .item-container {
     display: flex;
@@ -184,6 +174,7 @@ button.total{
     padding: 5px 0;
     background: var(--secundary-color);
     border-radius: 9px;
+    border: 3px solid var(--black);
     color:var(--white);
 }
 .item-container label {
@@ -227,7 +218,6 @@ button.total{
     border: 2px solid var(--secundary-color);
 }
 #inputLimpeza, #inputAlimentos {
-    font-family: "Roboto", sans-serif;
     letter-spacing: 1px;
     outline: none;
     border: 3px solid var(--black);
@@ -249,7 +239,6 @@ button.total{
     justify-content: center;
     flex-direction: column;
 }
-
 #total-geral{
     display: flex;
     justify-content: center;
@@ -260,7 +249,6 @@ button.total{
     padding: 1rem;
     margin: 1rem;
     font-size: 1.5rem;
-    
 }   
 footer{
         text-align: center;
@@ -350,7 +338,6 @@ footer{
     #inputLimpeza, #inputAlimentos:placeholder-shown{
         font-size: 1rem;
         outline: none;
-        border: none;
         padding: 0;
         min-width: 50%;
         height: 60px;
