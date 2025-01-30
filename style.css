@@ -194,6 +194,9 @@ button.total{
     border-radius: 9px;
     margin-bottom:10px ;
  }
+ .container div{
+    margin-bottom:10px ;
+ }
 .container{
     background-color: var(--primary-color);
     margin: 20px auto;
