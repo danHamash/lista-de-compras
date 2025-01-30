@@ -22,26 +22,26 @@
     font-family: "Luckiest Guy", "Open Sanas", sans-serif;
 }
 body{
-    background-color: var(--primary-color);
+    background-image: url(https://lolstatic-a.akamaihd.net/rso-authenticator-ui/0.79.5/assets/riot_desktop_background_2x.jpg);
     font-family: "Roboto";
 }
 :root{
-    --secundary-color:#ce7106;
-    --secundary-color-hover:#ce6f02;
+    --secundary-color:#0202025d;
     --button-color:#DE2D10;
     ----button-hover-color:#f8543b;
-    --primary-color:#d8d6d6;
     --white:#fff;
     --black:#000;
     --checked:#7bce1d;;
     --checked-bg:#4f8314;
-    --shadow:rgb(175, 175, 175);
 }
 
 h1, h2{
+    width: 400px;
+    margin: 2rem auto;
     font-size: 3rem;
+    border-radius: 9px;
+    border: 3px solid var(--black);
     color: var(--white);
-    margin: 0 0 2rem 0;
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -98,10 +98,16 @@ input:checked{
 }
 .descricao span{
     font-family: "Roboto", sans-serif;
-    font-size: 1.4rem;
+    font-size: 2rem;
+    color: var(--white);
     font-weight: 900;
-    margin: auto;
     text-align: center;
+    margin: 5rem auto;
+    padding: 1rem;
+    background: var(--secundary-color) ;
+    border: 3px solid var(--black);
+    border-radius:9px;
+    width: 600px;
 }
 .descricao p{
     font-weight: 400;
@@ -136,10 +142,14 @@ input:checked{
     font-family: 'Roboto';
 }
 .item-container {
+    width: 90%;
+    border-radius: 9px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
+    background: var(--secundary-color);
 }
 .item-container label {
     flex: 1;
@@ -169,13 +179,12 @@ input:checked{
     font-family: "Roboto", sans-serif;
     letter-spacing: 1px;
     outline: none;
-    border: none;
+    border: 3px solid var(--black);
     font-size: 1.5rem;
     min-width: 200px;
     min-height: 50px;
     margin-right: 10px;
     padding: 10px;
-    box-shadow: 3px 12px 9px var(--shadow);
 }
 .button-delete {
     margin-left: 90px;
@@ -209,10 +218,9 @@ button {
     color: var(--white);
     cursor: pointer;
     border-radius: 9px;
-    border: 1px solid var(--black);
+    border: 3px solid var(--black);
     padding: 10px;
     background: var(--button-color);
-    box-shadow: 3px 10px 9px var(--shadow);
 }
 button:hover, .total-button:hover{
     background: var(----button-hover-color);
