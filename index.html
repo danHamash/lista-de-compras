@@ -90,6 +90,7 @@ function shareList() {
         });
     }
 }
+
 function addItem(section) {
     const input = document.getElementById(`input${capitalizeFirstLetter(section)}`);
     const itemText = input.value.trim();
@@ -100,17 +101,17 @@ function addItem(section) {
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <input type="number" class="quantity" placeholder="Un" min="0" value=" " 
+            <input type="number" class="quantity" placeholder="Un" min="0" value="1" 
                 onchange="updateItem('${section}', '${itemText}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
                 <label>${itemText}</label>
-            <input type="number" class="value" placeholder="R$" min="0" step="0.01" 
+            <input type="number" class="value" placeholder="R$" min="0" step="0.01" value="0.00" 
                 onchange="updateItem('${section}', '${itemText}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
             <span class="total">Total: R$ 0.00</span>
             <button onclick="deleteItem(this, '${section}', '${itemText}')">X</button>
         `;
         sectionDiv.insertBefore(newItemDiv, input.nextSibling);
 
-        saveItem(section, itemText, 0, 0);
+        saveItem(section, itemText, 1, 0);
         input.value = '';
     } else {
         alert('Por favor, digite um item!');
@@ -118,10 +119,12 @@ function addItem(section) {
 }
 
 function saveItem(section, itemName, quantity = 1, value = 0) {
+    if (!itemName || itemName.trim() === '') return; // Impede salvar itens sem nome
+
     let items = JSON.parse(localStorage.getItem(section)) || [];
     const existingItemIndex = items.findIndex(item => item.name === itemName);
 
-    const total = quantity * value;
+    const total = (quantity || 1) * (value || 0);
 
     if (existingItemIndex >= 0) {
         items[existingItemIndex] = { name: itemName, quantity, value, total };
@@ -131,6 +134,7 @@ function saveItem(section, itemName, quantity = 1, value = 0) {
 
     localStorage.setItem(section, JSON.stringify(items));
 }
+
 
 function updateItem(section, itemName, newQuantity = null, newValue = null) {
     let items = JSON.parse(localStorage.getItem(section)) || [];
@@ -155,16 +159,18 @@ function loadItems(section) {
     const sectionDiv = document.querySelector(`#${section}`);
 
     items.forEach(item => {
+        if (!item.name || item.name.trim() === '') return; // Ignora itens sem nome
+
         const newItemDiv = document.createElement('div');
         newItemDiv.classList.add('item-container');
         newItemDiv.innerHTML = `
             <input type="checkbox"> 
-            <input type="number" class="quantity" placeholder="Un" min="0" value="${item.quantity}" 
+            <input type="number" class="quantity" placeholder="Un" min="0" value="${item.quantity || 1}" 
                 onchange="updateItem('${section}', '${item.name}', this.value, null); calculateTotal('${section}'); calculateGrandTotal();">
                 <label>${item.name}</label>
-            <input type="number" class="value" placeholder="R$" min="0" step="0.01" value="${item.value}" 
+            <input type="number" class="value" placeholder="R$" min="0" step="0.01" value="${item.value || 0}" 
                 onchange="updateItem('${section}', '${item.name}', null, this.value); calculateTotal('${section}'); calculateGrandTotal();">
-            <span class="total">Total: R$ ${item.total}</span>
+            <span class="total">Total: R$ ${(item.total || 0).toFixed(2)}</span>
             <button onclick="deleteItem(this, '${section}', '${item.name}')">X</button>
         `;
         sectionDiv.appendChild(newItemDiv);
