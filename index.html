@@ -119,7 +119,7 @@ function addItem(section) {
 }
 
 function saveItem(section, itemName, quantity = 1, value = 0) {
-    if (!itemName || itemName.trim() === '') return; // Impede salvar itens sem nome
+    if (!itemName || itemName.trim() === '') return; 
 
     let items = JSON.parse(localStorage.getItem(section)) || [];
     const existingItemIndex = items.findIndex(item => item.name === itemName);
@@ -159,7 +159,7 @@ function loadItems(section) {
     const sectionDiv = document.querySelector(`#${section}`);
 
     items.forEach(item => {
-        if (!item.name || item.name.trim() === '') return; // Ignora itens sem nome
+        if (!item.name || item.name.trim() === '') return; 
 
         const newItemDiv = document.createElement('div');
         newItemDiv.classList.add('item-container');
