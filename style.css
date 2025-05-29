@@ -21,7 +21,8 @@
     font-family: "Luckiest Guy", "Open Sanas", sans-serif;
 }
 body{
-    background-image: url(assets/img/fundo.avif);
+    background-image: url(https://lolstatic-a.akamaihd.net/rso-authenticator-ui/0.79.5/assets/riot_desktop_background_2x.jpg);
+    
     background-position: center;
     background-size: cover;
     font-family: "Roboto";
